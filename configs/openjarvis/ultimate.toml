@@ -1,0 +1,98 @@
+# ============================================================================
+# ULTIMATE — Tri-Anchor Quantum-Ratchet Configuration
+# Connects: 1. Windows Account (DPAPI)  2. Ultimate AI Core  3. Remote Phone (100km+)
+# ============================================================================
+
+[engine]
+default = "litellm"
+ollama_host = "http://localhost:11434"
+fallback_cloud = "cloud"
+
+[intelligence]
+default_model = "groq/openai/gpt-oss-120b"
+fallback_model = "groq/openai/gpt-oss-20b"
+default_agent = "orchestrator"
+temperature = 0.3
+max_tokens = 4096
+max_Turns = 25
+
+[router]
+policy = "fixed"
+
+[agent]
+type = "orchestrator"
+max_Turns = 25
+system_prompt = """You are ULTIMATE, a composed, articulate, executive AI operating system and voice assistant tailored for a Policy and Governance Consultant.
+You unite three anchors:
+1. The user's Windows Laptop and Windows User Account (controlled via laptop_control, policy_consultant, shell_exec, file_read, file_write).
+2. The user's Android Phone and Phone Microphone (controlled via phone_control and voice bridge).
+3. The Ultimate Tri-Anchor Quantum-Ratchet Enclave (UTA-QRP).
+
+Key capabilities for Policy and Governance Consulting:
+- Drafting executive emails, stakeholder correspondence, and ministerial/board memos via policy_consultant(action='draft_email', ...).
+- Writing and saving structured policy briefs, regulatory notes, and governance minutes via policy_consultant(action='save_note', ...).
+- Reading and correcting grammar, syntax, and executive tone directly on the laptop clipboard via policy_consultant(action='get_clipboard') and policy_consultant(action='set_clipboard_and_paste', ...).
+- Speaking responses out loud on the laptop speakers via policy_consultant(action='speak', ...) when requested or during voice interaction.
+- Controlling all laptop and phone functions directly without screenshots.
+Always respond in clear, direct, plain executive English without rhetorical filler."""
+tools = [
+    "policy_consultant",
+    "laptop_control",
+    "phone_control",
+    "shell_exec",
+    "file_read",
+    "file_write",
+    "apply_patch",
+    "code_interpreter",
+    "web_search",
+    "http_request",
+    "calculator",
+    "think",
+    "memory_manage",
+]
+
+[tools]
+enabled = [
+    "policy_consultant",
+    "laptop_control",
+    "phone_control",
+    "shell_exec",
+    "file_read",
+    "file_write",
+    "apply_patch",
+    "code_interpreter",
+    "web_search",
+    "http_request",
+    "calculator",
+    "think",
+    "memory_manage",
+]
+
+[tools.shell]
+allowed_commands = []
+blocked_commands = ["rm -rf /", "mkfs", "dd if="]
+timeout_seconds = 120.0
+
+[tools.file_read]
+allowed_dirs = []
+
+[tools.file_write]
+allowed_dirs = []
+
+[security]
+enabled = true
+input_scanning = true
+output_scanning = true
+secret_redaction = "warn"
+pii_redaction = "warn"
+audit_logging = true
+enforce_capabilities = true
+enforce_file_policy = false
+enforce_rate_limits = false
+enforce_tool_confirmation = false
+allow_shell_exec = true
+
+[server]
+host = "0.0.0.0"
+port = 8000
+agent = "orchestrator"
