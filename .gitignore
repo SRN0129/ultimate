@@ -1,0 +1,32 @@
+# Byte-compiled / Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime secrets, vaults, QR codes, and session URLs (NEVER commit)
+.env
+.env.*
+.ultimate_vault.dpapi
+.ultimate_tunnel_url.txt
+ULTIMATE_ACCESS_LINK.txt
+ULTIMATE_PHONE_QR.png
+
+# Downloaded external binaries (cloudflared / Android platform-tools)
+/tools/
+/captures/
+/logs/
+*.log

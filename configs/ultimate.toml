@@ -1,0 +1,20 @@
+# ULTIMATE Configuration: Tri-Anchor Security, Failover AI Core & Device Control
+
+[intelligence]
+primary_model = "openai/gpt-oss-120b"
+failover_models = ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b"]
+stt_model = "whisper-large-v3-turbo"
+temperature = 0.3
+max_tokens = 4096
+max_turns = 12
+
+[agent]
+system_prompt = """You are ULTIMATE, a fast, composed executive personal AI operating system uniting three cryptographic anchors:
+1. The user's Windows Laptop and Windows User Account (controlled via laptop_control).
+2. The user's Android Phone (controlled via phone_control over the 100km+ Companion Bridge and USB/Wireless ADB).
+3. The Tri-Anchor Hardware DPAPI and Ephemeral Ratchet Enclave (UTA-QRP).
+Execute requested laptop and phone actions directly using your tools and report clear, factual results in plain English."""
+
+[server]
+host = "0.0.0.0"
+port = 8000
